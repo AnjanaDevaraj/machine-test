@@ -18,15 +18,15 @@ class CustomHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.blue,
-      height: 60,
+      height: 100,
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 4),
+        padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 16),
         child:
         Align(
-          alignment: Alignment.topLeft,
+          alignment: Alignment.bottomLeft,
           child: Text(
             text,
-            style: const TextStyle(fontSize: 21, fontWeight: FontWeight.bold, color: Colors.white),
+            style: const TextStyle(fontSize: 21, color: Colors.white),
           ),
         ),
       ),

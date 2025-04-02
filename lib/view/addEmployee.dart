@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../cubit/employeeCubit.dart';
 import '../customWidgets/customHeaderBar.dart';
-import '../customWidgets/customText.dart';
 import '../customWidgets/customTextField.dart';
 
 class AddEmployee extends StatefulWidget {
@@ -10,85 +11,50 @@ class AddEmployee extends StatefulWidget {
 
 class _AddEmployeeState extends State<AddEmployee> {
   @override
-  void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      // var provider = Provider.of<HomeProvider>(context, listen: false);
-      // provider.clearAttendanceScreen();
-    });
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    return Scaffold(
-      //resizeToAvoidBottomInset: false,
-      backgroundColor: Colors.white,
-      body: Container(
-            color: Colors.white,
-            child: Column(
-              children: [
-                const CustomHeader(
-                  text: 'Attendance',
-                ),
-                Expanded(
-                  child: SingleChildScrollView(
-                    child: Center(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
-                        child: Column(
-                          children: [
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 6),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    border: Border.all(width: 0.4, color: Colors.grey),
-                                    borderRadius: BorderRadius.circular(8)),
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Expanded(
-                                              child: Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                              const CustomText(
-                                                text: 'Month:',
-                                                weight: FontWeight.bold,
-                                              ),
+    return BlocProvider(
+      create: (context) => EmployeeCubit(),
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: Container(
+          color: Colors.white,
+          child: Column(
+            children: [
+              const CustomHeader(
+                text: 'Add Employee Details',
 
-                                            ],
-                                          )),
-                                          const SizedBox(
-                                            width: 8,
-                                          ),
-
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-
-                          ],
+              ), Expanded(
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
+                    child: Column(
+                      children: [
+                        BlocBuilder<EmployeeCubit, void>(
+                          builder: (context, state) {
+                            final cubit = context.read<EmployeeCubit>();
+                            return Column(
+                              children: [
+                                CustomTextField(controller: cubit.nameController, hintText: "Employee Name"),
+                                SizedBox(height: 8,),
+                                CustomTextField(controller: cubit.roleController, hintText: "Employee Role"),
+                                SizedBox(height: 8,),
+                                CustomTextField(controller: cubit.fromDateController, hintText: "From Date"),
+                                SizedBox(height: 8,),
+                                CustomTextField(controller: cubit.toDateController, hintText: "To Date"),
+                                SizedBox(height: 8,),
+                              ],
+                            );
+                          },
                         ),
-                      ),
+                      ],
                     ),
                   ),
-                )
-              ],
-            ),
+                ),
+              ),
+            ],
           ),
-
+        ),
+      ),
     );
   }
 }

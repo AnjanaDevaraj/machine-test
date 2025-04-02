@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-
 class CustomTextField extends StatelessWidget {
   final TextEditingController controller;
   final String? hintText;
@@ -67,21 +66,22 @@ class CustomTextField extends StatelessWidget {
         controller: controller,
         style: const TextStyle(color: Colors.black, fontSize: 14),
         decoration: InputDecoration(
-          prefixIcon: prefixIcon,
+          prefixIcon: prefixIcon ?? const Icon(Icons.person, color: Colors.grey),
           hintText: hintText ?? '',
           hintStyle: TextStyle(color: Colors.grey),
           border: InputBorder.none,
           isDense: true,
           contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-          suffixIcon: obscureText!=null?
-          IconButton(
+          suffixIcon: obscureText != null
+              ? IconButton(
             icon: Icon(
               obscureText! ? Icons.visibility : Icons.visibility_off,
             ),
             onPressed: () {
               //Provider.of<LoginProvider>(context, listen: false).toggleObscureText();
             },
-          ):null,
+          )
+              : null,
         ),
       ),
     );

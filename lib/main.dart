@@ -1,5 +1,5 @@
+import 'package:employee_management_task/view/addEmployee.dart';
 import 'package:flutter/material.dart';
-import 'package:m/view/addEmployee.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
