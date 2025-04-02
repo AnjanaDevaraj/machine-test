@@ -1,6 +1,6 @@
 {
-    "name": "m",
-    "short_name": "m",
+    "name": "employee_management_task",
+    "short_name": "employee_management_task",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
