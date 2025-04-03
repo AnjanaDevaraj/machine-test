@@ -10,7 +10,7 @@ Future<void> main() async {
         navigatorKey: navigatorKey,
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.green), useMaterial3: true, fontFamily: 'Poppins'),
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue), useMaterial3: true, fontFamily: 'Poppins'),
         home: AddEmployee(),
   ));
 }

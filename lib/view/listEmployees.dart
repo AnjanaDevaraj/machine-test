@@ -1,7 +1,5 @@
 import 'package:employee_management_task/customWidgets/customDateTimePicker.dart';
-import 'package:employee_management_task/customWidgets/customText.dart';
 import 'package:employee_management_task/customWidgets/customTextButton.dart';
-import 'package:employee_management_task/view/listEmployees.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../cubit/employeeCubit.dart';
@@ -10,54 +8,24 @@ import '../customWidgets/customHeaderBar.dart';
 import '../customWidgets/customTextField.dart';
 import '../utilities/appStrings.dart';
 
-class AddEmployee extends StatefulWidget {
+class ListEmployees extends StatefulWidget {
   @override
-  _AddEmployeeState createState() => _AddEmployeeState();
+  _ListEmployeesState createState() => _ListEmployeesState();
 }
 
-class _AddEmployeeState extends State<AddEmployee> {
+class _ListEmployeesState extends State<ListEmployees> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => EmployeeCubit(),
       child: Scaffold(
         backgroundColor: Colors.white,
-        floatingActionButton: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            SizedBox(width: 100,
-              child: CustomTextButton(
-                minWidth: 50,
-                text: "Cancel",
-                color: Colors.grey[300]!,
-                textColor: Colors.blue,
-                textSize: 16,
-                onPressed: () {
-                  // Cancel action
-                },
-              ),
-            ),
-            SizedBox(width: 8), // Spacing between buttons
-            SizedBox(
-              width: 100,
-              child: CustomTextButton(
-                minWidth: 50,
-                text: "Save",
-                color: Colors.blue,
-                textSize: 16,
-                onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>ListEmployees()));
-                },
-              ),
-            ),
-          ],
-        ),
         body: Container(
           color: Colors.white,
           child: Column(
             children: [
               const CustomHeader(
-                text: 'Add Employee Details',
+                text: 'Employee List',
 
               ), Expanded(
                 child: SingleChildScrollView(
@@ -81,14 +49,7 @@ class _AddEmployeeState extends State<AddEmployee> {
                                   },
                                 ),
                                 SizedBox(height: 16),
-                                Row(
-                                  children: [
-                                    Expanded(child: CustomDatePickerField(controller: cubit.fromDateController,)),
-                                    SizedBox(width: 16,),
-                                    Expanded(child: CustomDatePickerField(controller: cubit.toDateController,)),
-                                  ],
-                                ),
-                                ],
+                              ],
                             );
                           },
                         ),
