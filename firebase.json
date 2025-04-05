@@ -1,0 +1,41 @@
+{
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "hosting": {
+    "public": "build/web",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  },
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "employeemanagement-38629",
+          "appId": "1:458060208607:android:cfe2faace2104cef168c6a",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "employeemanagement-38629",
+          "configurations": {
+            "android": "1:458060208607:android:cfe2faace2104cef168c6a",
+            "ios": "1:458060208607:ios:2e39a442acae2994168c6a",
+            "web": "1:458060208607:web:795c762a94fcfec0168c6a"
+          }
+        }
+      }
+    }
+  }
+}

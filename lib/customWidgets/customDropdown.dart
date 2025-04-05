@@ -1,6 +1,8 @@
 import 'package:employee_management_task/customWidgets/customText.dart';
 import 'package:flutter/material.dart';
 
+import '../utilities/appStrings.dart';
+
 class CustomDropdown<T> extends StatelessWidget {
   final String? hintText;
   final List<T> items;
@@ -19,19 +21,22 @@ class CustomDropdown<T> extends StatelessWidget {
     showModalBottomSheet(
       context: context,
       builder: (context) {
-        return ListView.builder(
-          itemCount: items.length,
-          itemBuilder: (context, index) {
-            return ListTile(
-              title: Text(items[index].toString()),
-              onTap: () {
-                if (onChanged != null) {
-                  onChanged!(items[index]);
-                }
-                Navigator.pop(context);
-              },
-            );
-          },
+        return SizedBox(
+          height: AppStrings.roles.length*60,
+          child: ListView.builder(
+            itemCount: items.length,
+            itemBuilder: (context, index) {
+              return ListTile(
+                title: Center(child: Text(items[index].toString())),
+                onTap: () {
+                  if (onChanged != null) {
+                    onChanged!(items[index]);
+                  }
+                  Navigator.pop(context);
+                },
+              );
+            },
+          ),
         );
       },
     );
